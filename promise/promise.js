@@ -1,3 +1,5 @@
+// promise手写实现
+
 const PENDING = 'pending'
 const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'

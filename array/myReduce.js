@@ -1,3 +1,5 @@
+// reduce实现
+
 Array.prototype.myReduce = function (fn, initialValue) {
   let arr = this
   let total = initialValue || arr[0]

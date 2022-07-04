@@ -1,3 +1,5 @@
+// call方法
+
 Function.prototype.myCall = function(context, ...args) {
   // 判断调用对象
   if (typeof this !== "function") {

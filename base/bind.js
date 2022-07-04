@@ -1,3 +1,5 @@
+// bind方法
+
 Function.prototype.myBind = function(context) {
   // 判断调用对象是否为函数
   if (typeof this !== "function") {

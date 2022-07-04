@@ -1,3 +1,5 @@
+// apply方法
+
 Function.prototype.myApply=function(context, ...args){
   // 获取调用`myApply`的函数本身，用 this 获取，如果 context 不存在，则为 window
   var context = context || window;
