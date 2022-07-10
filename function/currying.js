@@ -3,12 +3,12 @@ function add(...args) {
   let _args = args || [];
   // 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
   let _adder = function (...newArgs) {
-      _args = _args.concat(newArgs); //_args = [..._args,...newArgs]
-      return _adder;
+    _args = _args.concat(newArgs); //_args = [..._args,...newArgs]
+    return _adder;
   };
   // 利用toString隐式转换的特性，当最后执行时隐式转换，并计算最终的值返回
   _adder.toString = function () {
-      return _args.reduce((a, b) => a + b);
+    return _args.reduce((a, b) => a + b);
   };
   return _adder;
 }

@@ -1,4 +1,4 @@
-class ywEventEmitter {
+class eventEmitter {
   constructor() {
     this.handlers = {}
   }
@@ -13,7 +13,7 @@ class ywEventEmitter {
 
   emit(eventName, params) {
     if (Array.isArray(this.handlers[eventName])) {
-      this.handlers[eventName].forEach(handler => handler.apply(this, [params]))
+      this.handlers[eventName].forEach(handler => handler.apply(this, params))
     } else {
       console.log('no eventName')
     }

@@ -1,13 +1,12 @@
 function makeRepeat(fn, times, waits) {
   let num = 0;
   let timer = ""
-  return function() {
+  return function(...args) {
     let context = this
-    let args = arguments
     timer = setInterval(() => {
       if (num < times) {
         num++
-        fn.call(context, args)
+        fn.apply(context, args)
       } else {
         clearInterval(timer)
       }
