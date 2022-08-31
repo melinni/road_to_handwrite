@@ -1,28 +1,24 @@
-function quickSort(nums) {
-  sort(0, nums.length - 1, nums)
-}
-
-function sort(start, end, nums) {
-  if (end > start) {
-    let mid = Math.floor(start + (end - start) / 2)
-    sort1(start, mid, nums)
-    sort1(mid + 1, end, nums)
-  }
-}
-
-function sort1(start, end, nums) {
-  let pivot = nums[start]
-  let left = start, right = end
-  while (right > left) {
-    while (nums[right] > pivot && right > left) {
-      right--
+/**
+* 快速排序
+* @param {array}    - arr 需要排序的数组
+* @returns {array}
+*/
+function quickSort (arr) {
+  if (arr.length <= 1) return arr
+  var arr1 = [], arr2 = []
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] < arr[0]) {
+      arr1.push(arr[i])
+    } else {
+      arr2.push(arr[i])
     }
-    nums[left] = nums[right]
-    while (nums[left] < pivot && right > left) {
-      left++
-    }
-    nums[right] = nums[left]
   }
-
-  nums[left] = pivot
+  arr1 = quickSort(arr1)
+  arr2 = quickSort(arr2)
+  arr1.push(arr[0])
+  return arr1.concat(arr2)
 }
+
+var arr = [9, 4, 3, 1, 6, 3, 8, 7, 13, 0, 5, 2, 3]
+console.log(quickSort(arr))    // [1, 3, 3, 4, 6, 7, 8, 9]
+

@@ -6,9 +6,9 @@ class _LazyMan {
       this.next();
     }
     this.tasks.push(task_hi);
-    console.log("pushed", this.tasks);
+    // console.log("pushed", this.tasks);
     setTimeout(() => {               // 把 this.next() 放到调用栈清空之后执行
-      console.log("123");
+      // console.log("123");
       this.next();
     }, 0);
     // this.next();
@@ -16,7 +16,7 @@ class _LazyMan {
 
   next() {
     const task = this.tasks.shift(); // 取第一个任务执行
-    console.log("task", task, this.tasks);
+    // console.log("task", task, this.tasks);
     task && task();
   }
 
@@ -32,17 +32,17 @@ class _LazyMan {
 
   _sleepWrapper(time, first) {
     const task_sleep = () => {
+      console.log(`Wake up after ${time}`);
       setTimeout(() => {
-        console.log(`Wake up after ${time}`);
         this.next();
       }, time * 1000)
     }
     if (first) {
       this.tasks.unshift(task_sleep);     // 放到任务队列顶部
-      console.log("pushed", this.tasks);
+      // console.log("pushed", this.tasks);
     } else {
       this.tasks.push(task_sleep);        // 放到任务队列尾部
-      console.log("pushed", this.tasks);
+      // console.log("pushed", this.tasks);
     }
   }
 
@@ -52,7 +52,7 @@ class _LazyMan {
       this.next();
     }
     this.tasks.push(task_eat);
-    console.log("pushed", this.tasks);
+    // console.log("pushed", this.tasks);
     return this;
   }
 }

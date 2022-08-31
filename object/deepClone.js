@@ -1,23 +1,33 @@
 // 技巧一
-function deepClone(obj = {}, map = new Map()) {
-  if (typeof obj !== "object") {
-    return obj;
-  }
+function deepClone(obj = {}, map = new WeakMap()) {
+  // 处理 null
+  if (obj === null) return obj
+
+  // 处理正则
+  if (obj instanceof RegExp) return new RegExp(obj)
+
+  // 处理日期
+  if (obj instanceof Date) return new Date(obj)
+
+  // 处理 Symbol
+  if (typeof obj === 'symbol') return Symbol(obj)
+
+  // 处理原始类型
+  if (typeof obj !== 'object') return obj
+
   if (map.get(obj)) {
     return map.get(obj);
   }
 
   let result = {};
   // 初始化返回结果
-  if (
-    obj instanceof Array ||
-    // 加 || 的原因是为了防止 Array 的 prototype 被重写，Array.isArray 也是如此
-    Object.prototype.toString(obj) === "[object Array]"
-  ) {
-    result = [];
+  if (Object.prototype.toString.call(obj) === "[object Array]") {
+    result = []
   }
+
   // 防止循环引用
-  map.set(obj, result);
+  map.set(obj, result)
+
   for (const key in obj) {
     // 保证 key 不是原型属性
     if (obj.hasOwnProperty(key)) {

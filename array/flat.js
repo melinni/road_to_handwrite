@@ -52,7 +52,7 @@ function flat(arr) {
   return result;
 }
 
-// 技巧四：通过reduce和递归解决参数控制拉平层数
+// 技巧四：通过reduce和递归解决参数控制拉平层数（推荐）
 // reduce + 递归
 function flat(arr, num = 1) {
   return num > 0
