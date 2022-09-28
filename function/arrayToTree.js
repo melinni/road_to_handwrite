@@ -16,7 +16,7 @@ let arr = [
 ]
 
 function arrToTree(arr, parentId) {
-   // 判断是否是顶层节点，如果是就返回。不是的话就判断是不是自己要找的子节点
+  // 判断是否是顶层节点，如果是就返回。不是的话就判断是不是自己要找的子节点
   const filterArr = arr.filter(item => {
     return parentId === undefined ? item.parent === -1 : item.parent === parentId
   })
